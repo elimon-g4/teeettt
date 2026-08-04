@@ -7,7 +7,10 @@
     "start": "node index.js",
     "lint": "eslint .",
     "test": "jest",
-    "build": "npm run build"
+    "build": "npm run build",
+    "format": "prettier . --write",
+    "format:check": "prettier . --check",
+    "prepare": "husky"
   },
   "author": "",
   "license": "ISC",
@@ -16,9 +19,21 @@
     "@eslint/js": "^10.0.1",
     "eslint": "^10.8.0",
     "globals": "^17.9.0",
-    "jest": "^30.4.2"
+    "husky": "^9.1.7",
+    "jest": "^30.4.2",
+    "lint-staged": "^16.4.0",
+    "prettier": "3.9.6"
   },
   "dependencies": {
     "express": "^5.2.1"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{json,css,scss,md,yml,yaml}": [
+      "prettier --write"
+    ]
   }
 }
