@@ -21,7 +21,7 @@ jobs:
   validar:
     name: Compilar, probar y validar
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 5
 
     steps:
       - name: Descargar código
@@ -36,8 +36,11 @@ jobs:
       - name: Instalar dependencias
         run: npm ci
 
+      #- name: Validar formato
+      #  run: npm run format:check
+
       - name: Validar código
-        run: npm run lint
+        run: npm run lint -- --max-warnings=1
 
       - name: Ejecutar pruebas
         run: npm test -- --runInBand
