@@ -3,6 +3,7 @@ import express from 'express';
 const app = express();
 const port = process.env.PORT || 3000;
 const varialellll= null;
+let x = "asas";
 app.get('/', (_req, res) => {
   res.json({ message: 'Servidor Express funcionando' });
 });
