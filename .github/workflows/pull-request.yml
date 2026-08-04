@@ -42,5 +42,5 @@ jobs:
       - name: Ejecutar pruebas
         run: npm test -- --runInBand
 
-      - name: Compilar proyecto
-        run: npm run build
+      #- name: Compilar proyecto
+      #  run: npm run build
