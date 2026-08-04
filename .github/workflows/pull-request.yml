@@ -1,0 +1,46 @@
+name: Validación de Pull Request
+
+on:
+  pull_request:
+    branches:
+      - developer
+    types:
+      - opened
+      - synchronize
+      - reopened
+      - ready_for_review
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pull-request-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  validar:
+    name: Compilar, probar y validar
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Descargar código
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Instalar dependencias
+        run: npm ci
+
+      - name: Validar código
+        run: npm run lint
+
+      - name: Ejecutar pruebas
+        run: npm test -- --runInBand
+
+      - name: Compilar proyecto
+        run: npm run build
