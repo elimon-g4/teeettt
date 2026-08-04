@@ -2,12 +2,23 @@
   "name": "teeettt",
   "version": "1.0.0",
   "main": "index.js",
+  "type": "module",
   "scripts": {
+    "start": "node index.js",
     "lint": "eslint .",
     "test": "jest",
     "build": "npm run build"
   },
   "author": "",
   "license": "ISC",
-  "description": ""
+  "description": "",
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.8.0",
+    "globals": "^17.9.0",
+    "jest": "^30.4.2"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
+  }
 }
